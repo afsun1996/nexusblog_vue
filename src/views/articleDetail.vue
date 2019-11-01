@@ -23,13 +23,13 @@
                   {{articleDetail.create_time? formatTime(articleDetail.create_time): ''}}
                 </span>
                 <span class="wordage">
-                  字数 {{articleDetail.numbers}}
+                  字数 {{articleDetail.articlecontent.length}}
                 </span>
                 <span class="views-count">
                   阅读 {{articleDetail.views}}
                 </span>
                 <span class="comments-count">
-                  评论 {{articleDetail.comments}}
+                  评论 {{articleDetail.comments.length}}
                 </span>
                 <span class="likes-count">
                   喜欢 {{articleDetail.likes}}
@@ -40,18 +40,22 @@
                  title="标签">
               <el-tag size="mini"
                       v-for="tag in articleDetail.tags"
-                      :key="tag._id"
+                      :key="tag.id"
                       class="tag"
                       type="success">{{tag.name}}</el-tag>
             </div>
             <span class="clearfix" />
           </div>
         </div>
+        <div id="toc">
+
+        </div>
         <div class="content">
           <div id="content"
                class="article-detail"
                v-html="articleDetail.articlecontent">
           </div>
+
         </div>
         <div class="heart">
           <el-button type="danger"
@@ -72,21 +76,23 @@
                      @click="handleAddComment">发 送</el-button>
         </div>
         <CommentList v-if="!isLoading"
-                     :numbers="articleDetail.meta.comments"
+                     :numbers="articleDetail.comments.length"
                      :list="articleDetail.comments"
-                     :article_id="articleDetail._id"
+                     :article_id="articleDetail.id"
                      @refreshArticle="refreshArticle" />
       </div>
       <div v-if="!isMobileOrPc"
            style="width: 23%"
            class="article-right fr anchor"
-           v-html="articleDetail.toc"></div>
+           v-html="articleDetail.toc">
+      </div>
       <LoadingCustom v-if="isLoading"></LoadingCustom>
     </div>
 
   </div>
 </template>
 <script lang="ts">
+
 import { Component, Prop, Vue } from "vue-property-decorator";
 import {
   timestampToTime,
@@ -94,6 +100,7 @@ import {
   isMobileOrPc
 } from "@/utils/utils";
 import markdown from "@/utils/markdown.js";
+import highlight from "@/utils/highlight.js";
 import LoadingCustom from "@/components/loading.vue";
 import CommentList from "@/components/commentList.vue";
 import {
@@ -101,7 +108,7 @@ import {
   LikeParams,
   ArticleDetailParams
 } from "@/types/index";
-import da from "element-ui/src/locale/lang/da";
+// import da from "element-ui/src/locale/lang/da";
 
 declare let document: Document | any;
 
@@ -122,6 +129,7 @@ export default class ArticleDetail extends Vue {
   };
   private content: string = "";
   private articleDetail: ArticleDetailIF ={
+    toc:"",
     category: [],
     comments: [],
     articletags:[],
@@ -220,7 +228,7 @@ export default class ArticleDetail extends Vue {
   }
 
   beforeDestroy(): void {
-    document.title = "夜尽天明的博客网站";
+    document.title = "Nexus博客网站";
     document
       .getElementById("keywords")
       .setAttribute("content", "夜尽天明 的博客网站");
@@ -241,7 +249,7 @@ export default class ArticleDetail extends Vue {
 
   // beforeRouteLeave (to, from, next) {
   //   console.log('beforeRouteLeave')
-  //   document.title = "夜尽天明的博客网站";
+  //   document.title = "Nexus博客网站";
   //   document
   //     .getElementById("keywords")
   //     .setAttribute("content", "夜尽天明 的博客网站");
@@ -263,12 +271,12 @@ export default class ArticleDetail extends Vue {
       return response.data.result;
     });
     this.isLoading = false;
-    console.log(data);
     this.articleDetail = data;
     const article = markdown.marked(data.articlecontent);
+    console.log(article);
     article.then((res: any) => {
       this.articleDetail.articlecontent = res.content;
-      // this.articleDetail.toc = res.toc;
+      this.articleDetail.toc = res.toc;
     });
     let keyword = data.keyword.join(",");
     let description = data.articletabloid;
@@ -337,7 +345,6 @@ export default class ArticleDetail extends Vue {
     -moz-box-shadow: 0 0px 0px #fff;
     -webkit-box-shadow: 0 0px 0px #fff;
     box-shadow: 0 0px 0px #fff;
-
     li.active {
       color: #009a61;
     }

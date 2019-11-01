@@ -5,7 +5,7 @@
 
     <div class=" layout">
       <router-view />
-<!--      <Slider v-if="isShowSlider"></Slider>-->
+      <Slider v-if="isShowSlider"></Slider>
     </div>
 
     <ArrowUp></ArrowUp>

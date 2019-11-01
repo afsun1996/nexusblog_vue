@@ -8,7 +8,7 @@
             <router-link to="/">
               <img class="logo"
                    src="../assets/logo.jpg"
-                   alt="BiaoChenXuYing">
+                   alt="index">
             </router-link>
           </el-col>
           <el-col :span="16">
@@ -139,10 +139,12 @@ import RegisterAndLogin from "@/components/registerAndLogin.vue";
 import { isMobileOrPc, getQueryStringByName } from "@/utils/utils";
 import { Route } from "vue-router";
 import { UserInfo, NavListItem } from "@/types/index";
+import eathlogo from "@/components/eathlogo.vue";
 
 @Component({
   components: {
-    RegisterAndLogin
+    RegisterAndLogin,
+    eathlogo
   }
 })
 export default class Nav extends Vue {

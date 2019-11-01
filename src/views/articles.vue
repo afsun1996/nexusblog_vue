@@ -9,31 +9,30 @@
           :key="article.id"
           class="item"
         >
-<!--          <a :href="href + article.id" target="_blank">-->
-<!--            <img-->
-<!--              class="wrap-img img-blur-done"-->
-<!--              :data-src="article.img_url"-->
-<!--              data-has-lazy-src="false"-->
-<!--              src="../assets/bg.jpg"-->
-<!--              alt="文章封面"-->
-<!--            />-->
-            <div class="content">
-              <h4 class="title">{{ article.articletitle }}</h4>
-              <p class="abstract">{{ article.articletabloid }}</p>
-              <div class="meta">
-                <span>查看 {{ article.views }}</span>
-                <span>评论 {{ article.comments }}</span>
-                <span>赞 {{ article.likes }}</span>
-                <span v-if="article.publishdate" class="time">
-                  {{ formatTime(article.publishdate) }}
-                </span>
-              </div>
-            </div>
-<!--          </a>-->
+        <img
+          class="wrap-img img-blur-done"
+          :data-src="article.articleurl"
+          data-has-lazy-src="false"
+          src="../assets/bg.jpg"
+          alt="文章封面"
+        />
+        <div class="content">
+          <h4 class="title">{{ article.articletitle }}</h4>
+          <p class="abstract">{{ article.articletabloid }}</p>
+          <div class="meta">
+            <span>查看 {{ article.views }}</span>
+            <span>评论 {{ article.comments }}</span>
+            <span>赞 {{ article.likes }}</span>
+            <span v-if="article.publishdate" class="time">
+              {{ formatTime(article.publishdate) }}
+            </span>
+          </div>
+        </div>
         </li>
       </transition-group>
     </ul>
     <LoadingCustom v-if="isLoading"></LoadingCustom>
+<!--      <eathlogo v-if="isLoading"></eathlogo>-->
     <LoadEnd v-if="isLoadEnd"></LoadEnd>
   </div>
 </template>
@@ -52,7 +51,7 @@ import {
 import LoadEnd from "@/components/loadEnd.vue";
 import LoadingCustom from "@/components/loading.vue";
 import { ArticlesParams, ArticlesData } from "@/types/index";
-
+import eathlogo from "@/components/eathlogo.vue";
 // 获取可视区域的高度
 const viewHeight = window.innerHeight || document.documentElement.clientHeight;
 // 用新的 throttle 包装 scroll 的回调
@@ -82,7 +81,8 @@ const lazyload = throttle(() => {
 @Component({
   components: {
     LoadEnd,
-    LoadingCustom
+    LoadingCustom,
+    eathlogo
   }
 })
 export default class Articles extends Vue {

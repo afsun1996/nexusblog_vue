@@ -75,7 +75,7 @@ class MarkUtils {
     highlight.configure({ useBR: true });
     marked.setOptions({
       renderer: this.rendererMD,
-      headerIds: false,
+      headerIds: true,
       gfm: true,
       tables: true,
       breaks: false,

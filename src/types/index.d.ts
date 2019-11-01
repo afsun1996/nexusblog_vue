@@ -93,6 +93,7 @@ export interface Comments {
 }
 
 export interface ArticleDetailIF {
+  toc:string;
   category: Array<object>;
   comments: Array<Comments>;
   articletags: string[];
