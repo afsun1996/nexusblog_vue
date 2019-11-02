@@ -27,6 +27,8 @@
         <span :key="item._id">{{item.name}}</span>
       </router-link>
     </div>
+    <el-calendar v-model="value">
+    </el-calendar>
     <div class="introduce">
       <div class="title">技术以内的 BB</div>
       <div class="content">

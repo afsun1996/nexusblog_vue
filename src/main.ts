@@ -27,7 +27,8 @@ import {
   Timeline,
   TimelineItem,
   Card,
-  Tag
+  Tag,
+  Calendar
 } from "element-ui";
 import CollapseTransition from "element-ui/lib/transitions/collapse-transition";
 import mixin from "./mixins";
@@ -54,6 +55,8 @@ Vue.component(TimelineItem.name, TimelineItem);
 Vue.component(Card.name, Card);
 Vue.component(Tag.name, Tag);
 Vue.use(Loading.directive);
+Vue.component(Calendar.name,Calendar);
+
 Vue.prototype.$message = Message;
 Vue.prototype.$loading = Loading.service;
 

@@ -47,9 +47,7 @@
             <span class="clearfix" />
           </div>
         </div>
-        <div id="toc">
 
-        </div>
         <div class="content">
           <div id="content"
                class="article-detail"
@@ -100,7 +98,6 @@ import {
   isMobileOrPc
 } from "@/utils/utils";
 import markdown from "@/utils/markdown.js";
-import highlight from "@/utils/highlight.js";
 import LoadingCustom from "@/components/loading.vue";
 import CommentList from "@/components/commentList.vue";
 import {
@@ -108,7 +105,7 @@ import {
   LikeParams,
   ArticleDetailParams
 } from "@/types/index";
-// import da from "element-ui/src/locale/lang/da";
+import da from "element-ui/src/locale/lang/da.js";
 
 declare let document: Document | any;
 
