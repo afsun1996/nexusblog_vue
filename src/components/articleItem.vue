@@ -11,7 +11,7 @@
         </p>
 
         <div style="float: left;padding: 10px;margin-top: 16px;position: relative;">
-            <img :src="article.articleurl" style="width: 205px;height: 137px;margin-left: 10px" />
+            <img :src="article.articleurl" style="width: 205px;height: 137px;margin-left: 10px;border-radius: 5px;" />
         </div>
         <div style="float: right;width: 550px;">
             <h3>{{article.articletitle}}</h3>
@@ -28,8 +28,8 @@
                         分类：{{article.articletype}}
                     </span>
                 </p>
-                <p>
-                    {{ showdesc(article.articletabloid)}}
+                <p class="articledesc">
+                    {{article.articletabloid}}
                 </p>
             </div>
         </div>
@@ -57,6 +57,13 @@ export default{
 </script>
 
 <style scoped>
+    .articledesc{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
     .info{
         color: #919898;
         font-size: 14px;

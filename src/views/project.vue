@@ -42,27 +42,48 @@
 <!--      首页侧边栏 -->
       <div style="float: right;width: 290px;">
 <!--        关注我-->
-          <h2  class="title-h2">
-            关注我
-          </h2>
-          <div style="height: 215px;background-color: white">
-            <div style="padding:20px;margin: 20px;height: 195px;">
+        <h2  class="title-h2">
+          关注我
+        </h2>
+        <div style="height: 215px;background-color: white">
+          <div style="padding:20px;margin: 20px;height: 195px;">
 
-              <p class = "title">联系我:
-                <a href="#" class="icon iconqq" style="padding-left:30px;">
-                  <img src="img/qqicon.png" style="width: 50px;height: 50px;">
-                </a>
-              </p>
-              <p class = "title">联系我:
-                <a href="#" class="icon iconwx" style="padding-left:30px;">
-                  <img src="img/wxicon.png" style="width: 50px;height: 50px;">
-                </a>
-              </p>
-              <P class = "title">打赏我:
-                <img src="img/wxpaid.png" class="wxpaid"/>
-              </P>
-            </div>
+            <p class = "title">联系我:
+              <a href="#" class="icon iconqq" style="padding-left:30px;">
+                <img src="img/qqicon.png" style="width: 50px;height: 50px;">
+              </a>
+            </p>
+            <p class = "title">联系我:
+              <a href="#" class="icon iconwx" style="padding-left:30px;">
+                <img src="img/wxicon.png" style="width: 50px;height: 50px;">
+              </a>
+            </p>
+            <P class = "title">打赏我:
+              <img src="img/wxpaid.png" class="wxpaid"/>
+            </P>
           </div>
+        </div>
+
+        <div style="height: 250px;background-color: white;" class="clicksort">
+          <h2  class="title-h2">
+            点击排行
+          </h2>
+          <ul>
+            <li style="border-bottom: 1px solid #cecece;" v-for="(item,index) in list" :key="item.id" >
+              <span  class="ulindex" :class>
+                {{index+1}}
+              </span>
+              <span class="ultitle" >{{item.articletitle}}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div style="background-color: white;height: 471px;margin-top: 20px;" class="commentmodel">
+          <h2  class="title-h2">
+            最新评论
+          </h2>
+        </div>
+
       </div>
     </div>
 
@@ -221,6 +242,32 @@ export default class Timeline extends Vue {
     cursor: pointer;
     text-decoration: none;
   }
+
+  .clicksort{
+    .ulindex{
+      background-color: #F56C6C;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 4px;
+      margin: 8px 5px 0;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    .ultitle{
+      margin-left: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #606266;
+    }
+    .ultitle:hover{
+      color: #333;
+    }
+  }
+
+
 
 }
 
