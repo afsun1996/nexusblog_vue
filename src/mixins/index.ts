@@ -5,6 +5,14 @@ let mixin = {
   methods: {
     formatTime(value: string | Date): string {
       return timestampToTime(value, true);
+    },
+    showdesc(value: string): string{
+      if (value == null || value == '')
+        return "\n";
+      if (value.length>140){
+        return value.substr(0,140)+"...";
+      }
+      return value;
     }
   }
 };

@@ -27,7 +27,7 @@
         <span :key="item._id">{{item.name}}</span>
       </router-link>
     </div>
-    <el-calendar v-model="value">
+    <el-calendar v-model="thisdate" >
     </el-calendar>
     <div class="introduce">
       <div class="title">技术以内的 BB</div>
@@ -55,6 +55,7 @@ import { Params, TagsData } from "@/types/index";
 @Component
 export default class Slider extends Vue {
   private isLoadEnd: boolean = false;
+  private thisdate = new Date();
   private isLoading: boolean = false;
   private list: Array<object> = [];
   private total: number = 0;

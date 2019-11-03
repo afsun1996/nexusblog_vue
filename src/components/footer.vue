@@ -1,6 +1,9 @@
 
 <template>
-  <div class="footer"> Nexus ©2019 Created by afsun </div>
+  <div class="footer">
+    <el-divider></el-divider>
+    Nexus ©2019 Created by afsun
+  </div>
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";

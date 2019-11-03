@@ -56,7 +56,7 @@ export default class App extends Vue {
       referrer.setAttribute("content", "never");
     }
     if (
-      val.path === "/" ||
+      // val.path === "/" ||
       val.path === "/articles" ||
       val.path === "/archive" ||
       val.path === "/project" ||

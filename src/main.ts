@@ -28,7 +28,9 @@ import {
   TimelineItem,
   Card,
   Tag,
-  Calendar
+  Calendar,
+  Carousel,
+  CarouselItem, Divider
 } from "element-ui";
 import CollapseTransition from "element-ui/lib/transitions/collapse-transition";
 import mixin from "./mixins";
@@ -56,6 +58,9 @@ Vue.component(Card.name, Card);
 Vue.component(Tag.name, Tag);
 Vue.use(Loading.directive);
 Vue.component(Calendar.name,Calendar);
+Vue.component(Carousel.name,Carousel);
+Vue.component(CarouselItem.name,CarouselItem);
+Vue.component(Divider.name,Divider);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$loading = Loading.service;
