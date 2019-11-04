@@ -11,6 +11,8 @@ export const urls: object = {
   // 文章列表获取
   getArticleList: "api/article/showList",
 
+  // 主页
+  getmaininfo:"api/article/mainInfo",
 
 
   likeArticle: "likeArticle",
@@ -22,7 +24,7 @@ export const urls: object = {
 
   getLinkList: "getLinkList",
 
-  getTagList: "getTagList",
+  getTagList: "api/article/getTagList",
 
   getCategoryList: "getCategoryList",
 

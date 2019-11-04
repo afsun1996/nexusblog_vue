@@ -10,27 +10,27 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios,axios);
 
 import {
-  Dialog,
-  Form,
-  FormItem,
-  Input,
-  Button,
-  Message,
-  Menu,
-  MenuItem,
-  Row,
-  Col,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Loading,
-  Timeline,
-  TimelineItem,
-  Card,
-  Tag,
-  Calendar,
-  Carousel,
-  CarouselItem, Divider
+    Dialog,
+    Form,
+    FormItem,
+    Input,
+    Button,
+    Message,
+    Menu,
+    MenuItem,
+    Row,
+    Col,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Loading,
+    Timeline,
+    TimelineItem,
+    Card,
+    Tag,
+    Calendar,
+    Carousel,
+    CarouselItem, Divider, ButtonGroup, Pagination
 } from "element-ui";
 import CollapseTransition from "element-ui/lib/transitions/collapse-transition";
 import mixin from "./mixins";
@@ -61,7 +61,8 @@ Vue.component(Calendar.name,Calendar);
 Vue.component(Carousel.name,Carousel);
 Vue.component(CarouselItem.name,CarouselItem);
 Vue.component(Divider.name,Divider);
-
+Vue.component(ButtonGroup.name,ButtonGroup);
+Vue.component(Pagination.name,Pagination);
 Vue.prototype.$message = Message;
 Vue.prototype.$loading = Loading.service;
 

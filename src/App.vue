@@ -59,7 +59,7 @@ export default class App extends Vue {
       // val.path === "/" ||
       val.path === "/articles" ||
       val.path === "/archive" ||
-      val.path === "/project" ||
+      // val.path === "/project" ||
       val.path === "/timeline" ||
       val.path === "/message"
     ) {

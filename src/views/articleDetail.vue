@@ -352,6 +352,8 @@ export default class ArticleDetail extends Vue {
 }
 .article {
   width: 100%;
+    padding: 10px;
+  background-color: white;;
   .header {
     .title {
       margin: 20px 0 0;

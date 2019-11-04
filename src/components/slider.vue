@@ -1,30 +1,33 @@
 <template>
   <div class="right slider">
-    <img class="right-logo"
-         src="../assets/userLogo.jpeg"
-         alt="">
-    <div class="title">Nexus博客</div>
-    <div class="right-content">
-      <div class="item">
-        <div class="num">123</div>粉丝
-      </div>
-      <div class="item">
-        <div class="num">123</div>文章
-      </div>
-      <div class="item">
-        <div class="num">123</div>字数
-      </div>
-      <div class="item">
-        <div class="num">123</div>收获喜欢
+    <div style="background-color: white">
+      <img class="right-logo"
+           src="../assets/userLogo.jpeg"
+           alt="">
+      <div class="title">Nexus博客</div>
+      <div class="right-content">
+        <div class="item">
+          <div class="num">123</div>粉丝
+        </div>
+        <div class="item">
+          <div class="num">123</div>文章
+        </div>
+        <div class="item">
+          <div class="num">123</div>字数
+        </div>
+        <div class="item">
+          <div class="num">123</div>收获喜欢
+        </div>
       </div>
     </div>
     <div class="tags">
       <div class="title">标签Hub</div>
       <router-link v-for="item in list"
                    class="item"
-                   :key="item._id"
-                   :to="`/articles?tag_id=${item._id}&tag_name=${item.name}&category_id=`">
-        <span :key="item._id">{{item.name}}</span>
+                   :key="item.id"
+                   :to="`/articles?tag_id=${item.id}&tag_name=${item.tagname}&category_id=`">
+        <el-tag  size="medium" >{{item.tagname}}</el-tag>
+<!--        <span :key="item.id">{{item.tagname}}</span>-->
       </router-link>
     </div>
     <el-calendar v-model="thisdate" >
@@ -51,6 +54,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Params, TagsData } from "@/types/index";
+import da from "element-ui/src/locale/lang/da";
 
 @Component
 export default class Slider extends Vue {
@@ -71,13 +75,16 @@ export default class Slider extends Vue {
 
   private async handleSearch(): Promise<void> {
     this.isLoading = true;
-    const data: TagsData = await this.$https.get(this.$urls.getTagList, {
+    const data: any = await this.axios.post(this.$urls.getTagList, {
       params: this.params
+    }).then(function (response:any) {
+      console.log(response);
+      return response.data.result;
     });
     this.isLoading = false;
 
-    this.list = [...this.list, ...data.list];
-    this.total = data.count;
+    this.list = [...this.list, ...data];
+    this.total = data.length;
     this.params.pageNum++;
     if (this.total === this.list.length) {
       this.isLoadEnd = true;
@@ -89,7 +96,7 @@ export default class Slider extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 .slider {
-  padding-top: 50px;
+  padding-top: 10px;
 }
 .right {
   text-align: center;
@@ -145,6 +152,7 @@ export default class Slider extends Vue {
     padding: 5px 0 20px 0;
     margin-bottom: 10px;
     border-bottom: 1px solid #eee;
+    background-color: white;
     .title {
       font-size: 14px;
       color: #969696;
@@ -152,11 +160,11 @@ export default class Slider extends Vue {
     .item {
       display: inline-block;
       cursor: pointer;
-      padding: 5px 10px;
+      padding: 5px 5px;
       border-radius: 5px;
-      background-color: #eee;
+      /*background-color: #eee;*/
       color: #333;
-      margin: 10px 10px 0 0;
+      margin: 10px 0px 0 0;
       text-decoration: none;
       &:hover {
         color: #409eff;
