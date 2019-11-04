@@ -5,6 +5,8 @@
            :style="{'width': isMobileOrPc ? '100%' : '75%'}"
            class="article-left fl">
         <div class="header">
+          <el-page-header @back="goback" content="文章内容">
+          </el-page-header>
           <h1 class="title">{{articleDetail.articletitle}}</h1>
           <div class="author">
             <div class="avatar">
@@ -222,6 +224,10 @@ export default class ArticleDetail extends Vue {
       type: "success"
     });
     // this.handleSearch();
+  }
+
+  goback(){
+    window.history.back();
   }
 
   beforeDestroy(): void {

@@ -2,8 +2,30 @@
   <div class="left clearfix">
     <h3 v-if="params.tagid" class="left-title">{{ tag_name }} 相关的文章：</h3>
 
-    <div v-if="!isLoading" style="float: left;width: 870px;height: auto;background-color: white">
-      <ul style="list-style: none;padding: 10px;margin: 0px;">
+    <div v-if="!isLoading" style="float: left;width: 870px;height: auto;">
+<!--      文章过滤、检索-->
+      <div style="height: 60px;background-color: white;margin-bottom: 10px;">
+        <span style="margin: 10px;">文章名</span>
+        <el-input
+                style="width: 200px;"
+                maxlength="10"
+                show-word-limit
+                placeholder="请输入内容">
+          <i slot="prefix" class="el-input__icon el-icon-search"></i>
+        </el-input>
+
+        <span style="margin: 10px;">类型</span>
+        <el-select  clearable placeholder="请选择" style="margin: 10px;width: 200px;">
+          <el-option>
+<!--                  v-for="item in options"-->
+<!--                  :key="item.value"-->
+<!--                  :label="item.label"-->
+<!--                  :value="item.value">-->
+          </el-option>
+        </el-select>
+
+      </div>
+      <ul style="list-style: none;padding: 10px;margin: 0px;background-color: white;">
         <li v-for="item in articlesList" :key="item.id" style="cursor: pointer">
           <ArticleItem :article="item"></ArticleItem>
         </li>

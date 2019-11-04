@@ -30,7 +30,7 @@ import {
     Tag,
     Calendar,
     Carousel,
-    CarouselItem, Divider, ButtonGroup, Pagination
+    CarouselItem, Divider, ButtonGroup, Pagination, PageHeader, Select, Option
 } from "element-ui";
 import CollapseTransition from "element-ui/lib/transitions/collapse-transition";
 import mixin from "./mixins";
@@ -63,6 +63,10 @@ Vue.component(CarouselItem.name,CarouselItem);
 Vue.component(Divider.name,Divider);
 Vue.component(ButtonGroup.name,ButtonGroup);
 Vue.component(Pagination.name,Pagination);
+Vue.component(PageHeader.name,PageHeader);
+Vue.component(Select.name,Select);
+Vue.component(Option.name,Option);
+
 Vue.prototype.$message = Message;
 Vue.prototype.$loading = Loading.service;
 

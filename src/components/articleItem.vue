@@ -11,7 +11,9 @@
         </p>
 
         <div style="float: left;padding: 10px;margin-top: 16px;position: relative;overflow: hidden;">
-            <img :src="article.articleurl" style="width: 205px;height: 137px;margin-left: 10px;border-radius: 5px;" />
+            <div style="overflow: hidden;width: 205px;">
+            <img :src="article.articleurl" style="width: 205px;height: 137px;border-radius: 5px;" />
+            </div>
         </div>
         <div style="float: right;width: 550px;">
             <h3 style="font-size: 1pc;">{{article.articletitle}}</h3>
